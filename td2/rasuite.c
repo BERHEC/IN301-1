@@ -1,7 +1,6 @@
 #include "stdio.h"
 #define e 0.00001
 
-
 int diff(double a, double b){
 
 	if(a - b < 0){ if(b - a < e) return 0;
@@ -11,33 +10,49 @@ int diff(double a, double b){
 		
 }
 
-int main(){
+double racine(double n){
 	
 	double g,d,m;
 	double gb,db;
-	int i,n;
-	
-	scanf("%d", &n);
+	int i;
+
 	d=n;
 	g=0;
 	
 	do{ 		
 		gb=g; db=d;	
 		m = (d+g)/2.0; 
-		i = diff((m*m),(float)n);
+		i = diff((m*m), n);
 		
 		if(!i)break;
 		
 		if(i>0)d=m; // m*m> n
 		if(i<0)g=m; // m*m < n
 		
-		printf("%f-%f\n",g,d);
+
 				
 		}while((gb != g) || (db != d));
 
-	printf("La racine carrée de %d est %f.\n", n, d);
+	return d;
 
-  return 0;
+}
+
+
+int main(){
+	
+	int i,n;
+	double S = 0.0;
+	
+	scanf("%d", &n);
+	
+	for(i = n; i >= 1; i--)
+		S = racine(i+S);
+	
+	printf("%f\n",S);
+	
+	
+
+    return 0;
 
 }
 

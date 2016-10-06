@@ -1,5 +1,5 @@
 #include "stdio.h"
-#define e 0.005
+#define e 0.0001
 
 int diff(double a, double b){
 
